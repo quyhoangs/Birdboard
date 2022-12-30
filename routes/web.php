@@ -3,18 +3,13 @@
 use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
-//make router login
+Route::get('/register',[RegisterController::class,'create'])->name('register');
+Route::post('/register',[RegisterController::class,'store'])->name('register');
 
-
-//ProjectsController laravel 8
-
-// group middleware auth
-Route::middleware(['auth'])->group(function () {
-    Route::get('/projects/{project}', [ProjectsController::class,'show']);
-    Route::get('/projects', [ProjectsController::class,'index']);
-    Route::post('/projects', [ProjectsController::class,'store']);
-
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::controller(ProjectsController::class)->middleware(['auth'])->group(function () {
+    Route::prefix('projects')->group(function() {
+        Route::get('/{project}','show');
+        Route::get('/','index');
+        Route::post('/','store');
+    });
 });
-
-Auth::routes();
