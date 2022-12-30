@@ -3,9 +3,8 @@
 use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//make router login
+
 
 //ProjectsController laravel 8
 
