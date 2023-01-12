@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/register',[RegisterController::class,'create'])->name('register');
